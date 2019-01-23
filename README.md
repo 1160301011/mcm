@@ -12,6 +12,6 @@ Group Members: Jianwei Guo; Yuxuan Li; Xintong Song.
 
 ### Competition Period
 
-- :clock6: 25/1/2019 :six: A.M. Problems assesible.
-- :clock9: 29/1/2019 :nine: A.M Submission deadline.
+- :clock6: 25/1/2019 :six: A.M. Problems accessible.
+- :clock9: 29/1/2019 :nine: A.M. Submission deadline.
 

@@ -2,7 +2,7 @@
 
 Welcome to 2019 MCM project! Have a good time!
 
-Here’s some information about this group:
+Here's some information about this group:
 
 ### Control Number
 

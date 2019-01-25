@@ -1,0 +1,77 @@
+\documentclass{mcmthesis}
+\mcmsetup{CTeX = false,   % 使用 CTeX 套装时，设置为 true
+        tcn = 1912531, problem = B,% 队伍控制号码，接受一个字符串作为值；选题，接受一个字符串作为值；
+        sheet = true, %为真时将输出摘要页，否则不输出；默认为 true。
+        color = red,  %设置控制页的题目号的颜色
+        titleinsheet = true, %为真时将在摘要页输出标题，否则不输出；默认为 false。
+        keywordsinsheet = true,%为真时将在摘要页输出关键字，否则不输出；默认为 false。
+        titlepage = true,%为真时将输出标题页，否则不输出；默认为 true。
+        abstract = true}%为真时将在标题页输出摘要和关键词，否则不输出；默认值为 true。
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{geometry}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{indentfirst}
+\usepackage{chngpage}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{longtable}
+\usepackage{amsmath}
+\title{\LARGE Modeling on Drone-based Disaster Response System}
+\author{ }
+\date{\today}
+\makeatletter
+
+\usepackage{titletoc}
+\titlecontents{section}[2cm]{\bf}{\contentslabel{2em}}{}{%
+\titlerule*[0.5pc]{$\cdot$}\contentspage}%
+\titlecontents{subsection}[3cm]{\normalsize}{\contentslabel{2em}}{}{%
+\titlerule*[0.5pc]{$\cdot$}\contentspage}%
+\titlecontents{subsubsection}[5.3cm]{\normalsize}{\contentslabel{3.0em}}{}{%
+\titlerule*[0.5pc]{$\cdot$}\contentspage}%
+
+\newtheorem{assumption}{Assumption}%假设编号
+\newtheorem{theorem}{Theorem}%定理编号
+\newtheorem{lemma}{Lemma}%推论编号
+
+\begin{document}
+    \begin{abstract}
+
+        
+    \end{abstract}
+
+    \begin{keywords}
+        
+    \end{keywords}
+
+    \maketitle
+    \tableofcontents
+    \section{Introdution}
+    \subsection{Background}
+
+    \subsection{Problem Restatment}
+
+    \subsection{Our Work}
+
+    \section{Assumptions}
+    \begin{assumption}
+        %Assumptions
+    \end{assumption}
+
+    \section{List of Notations}
+    \begin{center}
+        \begin{longtable}{cl}
+            \caption{The List of Notation}
+            \hline
+            Symbol & Meaning
+            \hline
+
+        \end{longtable}
+
+    \end{center}
+
+\end{document}

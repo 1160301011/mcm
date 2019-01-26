@@ -18,7 +18,7 @@ v_up=5;%降落速度
 T0=drone_state(:,6);
 v_t=drone_state(:,5)./60;
 t_up=(H/v_up)./60;%上升/下降时间，单位是分钟
-distance=5;%到医院的距离，千米
+distance=8;%到医院的距离，千米
 
 %导入可行解
 data=readdata();
@@ -51,7 +51,7 @@ for i=1:n
     seq_temp=zeros(1,p);%无人机的选择
     T1=zeros(1,p);%运送时间
     T1(:)=100000000;
-
+    flag = 1;
     %计算每种无人机的最大飞行距离
     %for k = 1:7
     %    s(k)=v_t(k)*(T0(k)*m0(k)/(2*m0(k)+m1(k))-2*t_up);
@@ -61,7 +61,7 @@ for i=1:n
     for j=1:p
         for k=1:7 %对每种无人机，检查
             s(k)=v_t(k)*(T0(k)*m0(k)/(2*m0(k)+m1(j))-2*t_up);
-            if s(k)>distance && m1(j)<m_max(k)
+            if s(k)>=distance && m1(j)<=m_max(k)
                 time_deliver_temp=distance*2/v_t(k);
                 if time_deliver_temp<T1(j);
                     T1(j)=time_deliver_temp;
@@ -71,12 +71,13 @@ for i=1:n
         end
 
     end
-    time_temp=sum(T1);
-    if time_temp<time_sum
-        num=i;
-        seq=seq_temp;
-        time_sum=time_temp;
+    if flag
+        time_temp=sum(T1);
+        if time_temp<time_sum
+            num=i;
+            seq=seq_temp;
+            time_sum=time_temp;
+        end
     end
-
 
 end

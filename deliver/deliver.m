@@ -18,19 +18,33 @@ v_up=5;%降落速度
 T0=drone_state(:,6);
 v_t=drone_state(:,5)./60;
 t_up=(H/v_up)./60;%上升/下降时间，单位是分钟
-distance=20;%到医院的距离，千米
+distance=5;%到医院的距离，千米
 
 %导入可行解
-cell={};
-n=size(cell,2);
+data=readdata();
+cell_data={};
+c_m=size(data,1);
+c_n=size(data,2);
+c_n3=floor(c_n/3);
+for i=1:c_m
+    temp_mat=[];
+    for j=1:c_n3
+        if ~(data(i,3*(j-1)+1)==0&&data(i,3*(j-1)+2)==0&&data(i,3*(j-1)+3)==0)
+            temp_mat=[temp_mat;data(i,3*j-2:3*j)];
+            temp_m=size(temp_mat,1);
+        end
+    end
+    cell_data(1,i)=mat2cell(temp_mat,[temp_m],[3]);
+end
+n=size(cell_data,2);
 seq=[];%目标
 num=0;%接受方案号
 %对每一种方案做一个分配
 time_sum=1000000000;
 for i=1:n
     %time_temp=0;
-    time_deliver_temp=10000000;
-    temp=cell2mat(cell(i));
+    time_deliver_temp=0;
+    temp=cell2mat(cell_data(1,i));
     m1=temp*[2,2,3]';
     s=zeros(7,1);
     p=size(temp,1);%包的数量，即无人机的个数

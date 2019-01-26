@@ -1,4 +1,4 @@
-function volume = compute_v(Co_dir,co)
+function V = compute_v(Co_dir,co)
 %myFun - Description
 %
 % Syntax: volume = compute_v(Co_dir,co)

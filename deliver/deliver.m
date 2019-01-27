@@ -11,7 +11,7 @@ drone_state=[
 ];
 %m0=(drone_state(:,1)./1000).*(drone_state(:,2)./1000).*(drone_state(:,3)./1000).*...
 %    [2.2,8.3,5.3,7.3,7.3,7.3,7.3,7.3]';
-m_max=drone_state(:,4);
+m_max=drone_state(:,4);m_max(1)=3;m_max(2)=3;m_max(4)=3;
 m0=drone_state(:,4)./2;
 H=150;%飞行高度
 v_up=5;%降落速度
@@ -19,6 +19,7 @@ T0=drone_state(:,6);
 v_t=drone_state(:,5)./60;
 t_up=(H/v_up)./60;%上升/下降时间，单位是分钟
 distance=8;%到医院的距离，千米
+S_max=v_t.*(T0.*0.70-2.*t_up);%载重时最长飞行距离
 
 %导入可行解
 data=readdata();
@@ -40,10 +41,11 @@ n=size(cell_data,2);
 seq=[];%目标
 num=0;%接受方案号
 %对每一种方案做一个分配
-time_sum=1000000000;
+drone_sum=1000000000;
 for i=1:n
     %time_temp=0;
     time_deliver_temp=0;
+    s_temp=0;
     temp=cell2mat(cell_data(1,i));
     m1=temp*[2,2,3]';
     s=zeros(7,1);
@@ -59,25 +61,30 @@ for i=1:n
     %暴力求解最优解
     %对每个包裹进行计算
     for j=1:p
-        for k=1:7 %对每种无人机，检查
-            s(k)=v_t(k)*(T0(k)*m0(k)/(2*m0(k)+m1(j))-2*t_up);
-            if s(k)>=distance && m1(j)<=m_max(k)
+        for k=1:7 %对每种无人机检查项目
+            if S_max(k)>=distance && m1(j)<=m_max(k)
                 time_deliver_temp=distance*2/v_t(k);
-                if time_deliver_temp<T1(j);
+                if time_deliver_temp<T1(j)
                     T1(j)=time_deliver_temp;
                     seq_temp(j)=k;
                 end
             end
         end
-
+    end
+    for j = 1:p
+        if seq_temp(j)=0
+            flag=0;
+            break;
+        end
     end
     if flag
         time_temp=sum(T1);
-        if time_temp<time_sum
+        if time_temp<drone_sum
             num=i;
             seq=seq_temp;
-            time_sum=time_temp;
+            drone_sum=time_temp;
         end
     end
+    
 
 end

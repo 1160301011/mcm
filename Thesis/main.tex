@@ -1,12 +1,12 @@
 \documentclass{mcmthesis}
-\mcmsetup{CTeX = false,   % 使用 CTeX 套装时，设置�? true
+\mcmsetup{CTeX = false,   % 使用 CTeX 套装时，设置�? true
         tcn = 1912531, problem = B,% 队伍控制号码，接受一个字符串作为值；选题，接受一个字符串作为值；
-        sheet = true, %为真时将输出摘要页，否则不输出；默认�? true�?
+        sheet = true, %为真时将输出摘要页，否则不输出；默认�? true�?
         color = red,  %设置控制页的题目号的颜色
-        titleinsheet = true, %为真时将在摘要页输出标题，否则不输出；默认为 false�?
-        keywordsinsheet = true,%为真时将在摘要页输出关键字，否则不输出；默认�? false�?
-        titlepage = true,%为真时将输出标题页，否则不输出；默认�? true�?
-        abstract = true}%为真时将在标题页输出摘要和关键词，否则不输出；默认值为 true�?
+        titleinsheet = true, %为真时将在摘要页输出标题，否则不输出；默认为 false�?
+        keywordsinsheet = true,%为真时将在摘要页输出关键字，否则不输出；默认�? false�?
+        titlepage = true,%为真时将输出标题页，否则不输出；默认�? true�?
+        abstract = true}%为真时将在标题页输出摘要和关键词，否则不输出；默认值为 true�?
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{times}
 \usepackage{mathptmx}
@@ -159,6 +159,7 @@
                  \end{tabular}
                  \end{center} 
                  \end{table}
+
                  \begin{table}[!ht]
                     \caption{The categories of hurricanes}
                      \renewcommand\arraystretch{1.5}
@@ -180,5 +181,27 @@
                      \end{tabular}
                      \end{center} 
                      \end{table}
+
+                     \begin{table}[!ht]
+                        \caption{The categories of hurricanes}
+                         \renewcommand\arraystretch{1.5}
+                         \setlength{\abovecaptionskip}{0pt}%    
+                        \setlength{\belowcaptionskip}{10pt}%
+                        \begin{center}
+                        \begin{tabular}{p{.2\textwidth}p{.2\textwidth}m{.5\textwidth}}
+                        \toprule[1.5pt]
+                         State No.($b_i$) & 1 & 2 & 3 & 4 & 5 & 6 \\
+                         \midrule
+                        
+                          Parallel to L & $l_{tk}$ & $w_{tk}$ & $h_{tk}$ & $l_{tk}$ & $w_{tk}$ & $h_{tk}$   \\
+                        
+                          Parallel to W & $w_{tk}$ & $l_{tk}$ & $l_{tk}$ & $h_{tk}$ & $h_{tk}$ & $w_{tk}$   \\
+                        
+                          Parallel to H & $h_{tk}$ & $h_{tk}$ & $w_{tk}$ & $w_{tk}$ & $l_{tk}$ & $l_{tk}$ \\
+                        
+                          \bottomrule[1.5pt]
+                         \end{tabular}
+                         \end{center} 
+                         \end{table}
 
 \end{document}

@@ -104,5 +104,44 @@ Firstly, the given number of drones are placed in the container in the range of 
 
 Next, we use SA to optimize the sequence of the solution, in order to pack more cargos in the container.
 
+## Result
+
+
+
+
+
+|      | A    | B                       | C       | D    | E    | F    | G       |
+| ---- | ---- | ----------------------- | ------- | ---- | ---- | ---- | ------- |
+|container 1| |||||||
+| Hospital Pavia Arecibo |      | (1,0,0) |         |      |      |  |  |
+|container 2||||||||
+| 2    |      | (1,0,0),(1,0,0),(0,0,1) |         |      |      |      |         |
+| 3    |      |                         | (1,1,0) |      |      |      |         |
+| 4    |      |                         | (2,1,2) |      |      |      |         |
+|container 3||||||||
+| Caribbean Medical Center |      |                  |         |      |      | (1,0,1) |         |
+
+
+
+|      | A    | B    | C    | D    | E    | F    | G    | H    |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 1    | 0    | 1    | 0    | 0    | 0    | 0    | 0    | 3    |
+| 2    | 0    | 3    | 2    | 0    | 0    | 0    | 0    | 5    |
+| 3    | 0    | 0    | 0    | 0    | 0    | 1    | 0    | 1    |
+
+|      | A    | B    | C    | D    | E    | F    | G    | H    |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 1    | 0    | 1    | 0    | 0    | 0    | 0    | 0    | 3    |
+| 2    | 0    | 3    | 2    | 0    | 0    | 0    | 0    | 5    |
+| 3    | 0    | 1    | 0    | 0    | 0    | 1    | 0    | 1    |
+
+
+
+|            | MED1 | MED2 | MED3 |
+| ---------- | ---- | ---- | ---- |
+| CONTAINER1 | 1    | 0    | 0    |
+| CONTAINER2 | 5    | 2    | 3    |
+| CONTAINER3 | 1    | 0    | 1    |
+
 
 

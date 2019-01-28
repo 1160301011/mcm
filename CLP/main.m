@@ -22,13 +22,16 @@ med=[355.600000000000	177.800000000000	127;
 Size=[drone;med];
 Size=[(1:11)',Size];
 Size(:,5)=Size(:,2).*Size(:,3).*Size(:,4);
-sortrows(Size,-5);%按体积大小降序排列
+%sortrows(Size,-5);%按体积大小降序排列
 
-n=800;
+n=10000;
 S=zeros(1,2*n);%定义解的编码
 
 S(1,1:2*n)=1;%假设初始解
-S(1,1:n)=randi(11,[1,n]);
+%S(1,1:n)=randi(11,[1,n]);
+S(1,1:3)=8;
+S(1,4)=2;
+S(1,5:n)=9;
 S(1,n+1:2*n)=randi(6,[1,n]);
 
 %解码,生成每个箱子对应的方向
@@ -39,7 +42,7 @@ v0=0;
 s0(1,:)=1;
 rand('state',sum(clock));
 for j=1:10000
-    s_temp=cat(2,randi(11,[1,n]),randi(6,[1,n]));%产生解
+    s_temp=cat(2,S(1,1:n),randi(6,[1,n]));%产生解
     Co_Dir=s_decode(s_temp,Size);
     [co,Ls,Rs,Ms]=Range_cargo(Container_size,Co_Dir,n);
     v_temp=compute_v(Co_Dir,co);
@@ -50,18 +53,20 @@ for j=1:10000
 end
 
 %退火参数
-e=0.1^30;
-L=20000;
-at=0.999;
+e=0.1^10;
+L=5000;
+at=0.9;
 T=1;
 for k=1:L
-    c=1+floor(n*rand(1,2));
-    d=1+floor(n*rand(1,2));
-    c=sort(c);d=sort(d);
+    c=1+n+floor(n*rand(1,2));
+    d=n+1+floor(n*rand(1,2));
+    x=mode(s0(1+n:2*n));
+    %c=sort(c);d=sort(d);
     s_1=s0;
     %交换
-    s_1(c(1))=s0(c(2));
-    s_1(c(2))=s0(c(1));
+    %s_1(c(1))=s0(c(2));
+    %s_1(c(2))=s0(c(1));
+    s_1(c(1))=x;
     s_1(d(1))=s0(d(2));
     s_1(d(2))=s0(d(1));
     %解码新解
@@ -88,5 +93,12 @@ for k=1:L
 
 end
 
-plot_cargo(Co_Dir,co)
+plot_cargo(Co_Dir,co,s0)
+%数据处理
+for p = 1:size(co,1)
+    num_med1(p)=((~(co(p,1)==0&&co(p,2)==0&&co(p,3)==0))&&s0(1,p)==9);
+end
+med1sum=sum(num_med1);
+per=v0/(L*W*H);
+
     

@@ -18,8 +18,8 @@ v_up=5;%降落速度
 T0=drone_state(:,6);
 v_t=drone_state(:,5)./60;
 t_up=(H/v_up)./60;%上升/下降时间，单位是分钟
-distance=8;%到医院的距离，千米
-S_max=v_t.*(T0.*0.70-2.*t_up);%载重时最长飞行距离
+distance=10.74;%到医院的距离，千米
+S_max=v_t.*(T0.*0.70-2.*t_up)./2;%载重时最长飞行距离
 
 %导入可行解
 data=readdata();
@@ -72,7 +72,7 @@ for i=1:n
         end
     end
     for j = 1:p
-        if seq_temp(j)=0
+        if seq_temp(j)==0
             flag=0;
             break;
         end

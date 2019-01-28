@@ -1,5 +1,5 @@
 function Co_Dir = s_decode(S,Size)
-    n=800;
+    n=10000 ;
     for i = 1:n
         if S(1,n+i)==1
             Co_Dir(i,:)=[Size(S(i),2),Size(S(i),3),Size(S(i),4)];
